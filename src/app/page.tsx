@@ -1,39 +1,6 @@
 "use client";
 
-import { authClient } from "@/lib/auth-client";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
-
 export default function Home() {
-  const { data: session, isPending } = authClient.useSession();
-  const router = useRouter();
-
-  useEffect(() => {
-    if (!isPending && !session?.user) {
-      router.push("/auth");
-    }
-  }, [session, isPending, router]);
-
-  if (isPending) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-          <p className="mt-4 text-gray-600">Loading...</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (!session?.user) {
-    return null; // Will redirect via useEffect
-  }
-
-  const handleSignOut = async () => {
-    await authClient.signOut();
-    router.push("/auth");
-  };
-
   return (
     <div className="min-h-screen w-full bg-white relative">
       {/* Noise Texture (Darker Dots) Background */}
@@ -56,15 +23,6 @@ export default function Home() {
               Node-based image generation and editing web app by The Timeline
               Company.
             </p>
-            <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
-              <p className="text-green-800">
-                Welcome back,{" "}
-                <span className="font-semibold">
-                  {session.user.name || session.user.email}
-                </span>
-                !
-              </p>
-            </div>
           </div>
 
           <div className="flex gap-4 items-center flex-col sm:flex-row">
@@ -87,25 +45,7 @@ export default function Home() {
               </svg>
               Open Flow Editor
             </a>
-            <button
-              onClick={handleSignOut}
-              className="rounded-full transition-all duration-200 flex items-center justify-center bg-red-50 text-red-600 gap-2 font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto shadow-[8px_8px_16px_rgba(0,0,0,0.1),-8px_-8px_16px_rgba(255,255,255,0.8)] hover:shadow-[inset_4px_4px_8px_rgba(0,0,0,0.1),inset_-4px_-4px_8px_rgba(255,255,255,0.8)]"
-            >
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
-                />
-              </svg>
-              Sign Out
-            </button>
+
             <a
               className="rounded-full transition-all duration-200 flex items-center justify-center bg-white font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[190px] text-gray-700 shadow-[8px_8px_16px_rgba(0,0,0,0.1),-8px_-8px_16px_rgba(255,255,255,0.8)] hover:shadow-[inset_4px_4px_8px_rgba(0,0,0,0.1),inset_-4px_-4px_8px_rgba(255,255,255,0.8)]"
               href="https://reactflow.dev/learn"
