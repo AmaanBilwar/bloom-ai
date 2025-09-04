@@ -55,7 +55,7 @@ function CustomNode({
       {/* Delete button positioned in top-right corner */}
       <button
         onClick={onDelete}
-        className="absolute -top-2 -right-2 w-5 h-5 bg-red-500 hover:bg-red-600 text-white rounded-full flex items-center justify-center shadow-md transition-colors duration-200 z-10"
+        className="absolute -top-2 -right-2 w-5 h-5 bg-white text-red-500 rounded-full flex items-center justify-center shadow-[4px_4px_8px_rgba(0,0,0,0.1),-4px_-4px_8px_rgba(255,255,255,0.8)] hover:shadow-[inset_2px_2px_4px_rgba(0,0,0,0.1),inset_-2px_-2px_4px_rgba(255,255,255,0.8)] transition-all duration-200 z-10"
         title="Delete node"
       >
         <svg
@@ -185,7 +185,7 @@ function FlowEditorInner() {
             <div className="flex gap-2">
               <button
                 onClick={addNode}
-                className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg shadow-md transition-colors duration-200 flex items-center gap-2"
+                className="px-4 py-2 bg-gray-800 text-white rounded-lg shadow-[8px_8px_16px_rgba(0,0,0,0.3),-8px_-8px_16px_rgba(255,255,255,0.1)] hover:shadow-[inset_4px_4px_8px_rgba(0,0,0,0.3),inset_-4px_-4px_8px_rgba(255,255,255,0.1)] transition-all duration-200 flex items-center gap-2"
               >
                 <svg
                   width="16"
@@ -204,7 +204,7 @@ function FlowEditorInner() {
               </button>
               <button
                 onClick={deleteAllNodes}
-                className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg shadow-md transition-colors duration-200 flex items-center gap-2"
+                className="px-4 py-2 bg-gray-800 text-white rounded-lg shadow-[8px_8px_16px_rgba(0,0,0,0.3),-8px_-8px_16px_rgba(255,255,255,0.1)] hover:shadow-[inset_4px_4px_8px_rgba(0,0,0,0.3),inset_-4px_-4px_8px_rgba(255,255,255,0.1)] transition-all duration-200 flex items-center gap-2"
                 title="Delete all nodes and connections"
               >
                 <svg
